@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.6
 
-import optparse
+import argparse
 import socket
 import threading
 
@@ -16,13 +16,13 @@ def conn_scan(target_host, target_port):
         results = conn_socket.recv(100)
 
         screen_lock.acquire()
-        print(f"[+]{target_port}/tcp open")
+        print(f"[+] {target_port}/tcp open")
         print(f"[+] ")
         print(str(results))
 
         conn_socket.close()
     except:
-        print(f"[-]{target_port}/tcp closed")
+        print(f"[-] {target_port}/tcp closed")
     finally:
         screen_lock.release()
         conn_socket.close()
@@ -47,14 +47,14 @@ def port_scan(target_host, target_ports):
 
 
 def main():
-    parser = optparse.OptionParser("usage: %prog -H <target_host> -p <target_port>")
-    parser.add_option("-H", dest="target_host", type="string", help="specify target host")
-    parser.add_option("-p", dest="target_port", type="string", help="specify target port")
+    parser = argparse.ArgumentParser(description="simple network scanner using TCP")
+    parser.add_argument("-H", dest="target_host", type=str, help="specify target host")
+    parser.add_argument("-p", dest="target_port", type=str, help="specify target port")
 
-    options, args = parser.parse_args()
+    args = parser.parse_args()
 
-    target_host = options.target_host
-    target_ports = str(options.target_port).split(",")
+    target_host = args.target_host
+    target_ports = str(args.target_port).split(",")
 
     port_scan(target_host, target_ports)
 

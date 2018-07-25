@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import optparse
+import argparse
 import pexpect.pxssh as pxssh
 import queue
 import threading
@@ -39,19 +39,19 @@ def connect(host, user, password, release, found, fails):
 
 
 def main():
-    parser = optparse.OptionParser("usage: %prog -u <user> -h <host> -p <port>")
+    parser = argparse.ArgumentParser(description="brute force SSH passwords")
 
-    parser.add_option("-u", dest="user", type="string", help="specify SSH user")
-    parser.add_option("-H", dest="host", type="string", help="specify SSH host")
-    parser.add_option("-P", dest="port", type="string", help="specify SSH port")
-    parser.add_option("-f", dest="password_file", type="string", help="specify your passwords file")
+    parser.add_argument("-u", dest="user", type=str, help="specify SSH user")
+    parser.add_argument("-H", dest="host", type=str, help="specify SSH host")
+    parser.add_argument("-P", dest="port", type=str, help="specify SSH port")
+    parser.add_argument("-f", dest="password_file", type=str, help="specify your passwords file")
 
-    options, ags = parser.parse_args()
+    args = parser.parse_args()
 
-    user = options.user
-    host = options.host
-    port = options.port
-    password_file = options.password_file
+    user = args.user
+    host = args.host
+    port = args.port
+    password_file = args.password_file
 
     found = queue.Queue(maxsize=1)
     fails = queue.Queue(maxsize=MAX_FAILS)
