@@ -58,6 +58,19 @@ $ python ssh_botnet.py -u <user> -p <password> -H <target_host> -P <target_port>
 * `target_host`: IP address of the target.
 * `target_port`: port of the target.
 
+### `ftp_attack.py`:
+
+**Description** : Injection of code into web pages served by FTP servers.
+
+**Usage** :
+
+```
+$ python ftp_attack.py -H <target_hosts> -f <passwd_file>
+```
+
+* `target_hosts`: IP address of the target(s).
+* `passwd_file`: user/password file.
+
 ## Requirements
 
 The following packages are also listed in `requirements.txt`:
