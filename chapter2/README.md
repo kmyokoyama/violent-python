@@ -2,13 +2,18 @@
 
 ## Scripts
 
-* scanner.py:
+### `scanner.py`:
 
-Usage:
+**Description** : Simple network scanner using TCP.
+
+**Usage** :
 
 ```
 $ python scanner.py -H <target_host> -p <target_port>
 ```
+
+* `target_host`: IP address of the target.
+* `target_port`: port of the target to be scanned.
 
 ## Requirements
 
