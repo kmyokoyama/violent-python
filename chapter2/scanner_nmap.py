@@ -15,7 +15,7 @@ def nmap_scan(target_host, target_port):
 def main():
     parser = argparse.ArgumentParser(description="simple network scanner using Nmap")
     parser.add_argument("-H", dest="target_host", type=str, help="specify target host")
-    parser.add_argument("-p", dest="target_port", type=str, help="specify target port")
+    parser.add_argument("-P", dest="target_port", type=str, help="specify target port")
 
     args = parser.parse_args()
 

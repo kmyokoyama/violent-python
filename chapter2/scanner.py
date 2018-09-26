@@ -49,7 +49,7 @@ def port_scan(target_host, target_ports):
 def main():
     parser = argparse.ArgumentParser(description="simple network scanner using TCP")
     parser.add_argument("-H", dest="target_host", type=str, help="specify target host")
-    parser.add_argument("-p", dest="target_port", type=str, help="specify target port")
+    parser.add_argument("-P", dest="target_port", type=str, help="specify target port")
 
     args = parser.parse_args()
 
