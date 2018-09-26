@@ -65,11 +65,12 @@ $ python ssh_botnet.py -u <user> -p <password> -H <target_host> -P <target_port>
 **Usage** :
 
 ```
-$ python ftp_attack.py -H <target_hosts> -f <passwd_file>
+$ python ftp_attack.py -H <target_hosts> -f <passwd_file> -r <redirect>
 ```
 
 * `target_hosts`: IP address of the target(s).
 * `passwd_file`: user/password file.
+* `redirect`: redirect page.
 
 ## Requirements
 
